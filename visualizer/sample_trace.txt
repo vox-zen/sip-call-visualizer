@@ -1,1 +1,14 @@
-
+Alice -> Proxy: INVITE
+Proxy -> Bob: INVITE
+Bob -> Proxy: 100 Trying
+Proxy -> Alice: 100 Trying
+Bob -> Proxy: 180 Ringing
+Proxy -> Alice: 180 Ringing
+Bob -> Proxy: 200 OK
+Proxy -> Alice: 200 OK
+Alice -> Proxy: ACK
+Proxy -> Bob: ACK
+Bob -> Proxy: BYE
+Proxy -> Alice: BYE
+Alice -> Proxy: 200 OK
+Proxy -> Bob: 200 OK
