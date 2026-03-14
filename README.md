@@ -1,3 +1,13 @@
+## Commit
+
+```bash
+git add .
+git commit -m "add initial sip call visualizer"
+git push
+```
+
+---
+
 # SIP Call Visualizer
 
 SIP Call Visualizer is a simple tool that parses SIP traces and converts them into readable call flow sequences.
