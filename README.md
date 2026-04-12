@@ -1,152 +1,137 @@
-## Commit
+# 📞 SIP Call Visualizer
 
-```bash
-git add .
-git commit -m "add initial sip call visualizer"
-git push
-```
+Convert raw SIP messages into **clear, readable call flows** and **Mermaid sequence diagrams**.
+
+Designed for debugging, learning, and analyzing VoIP/SIP call behavior.
 
 ---
 
-# SIP Call Visualizer
+## 🚀 Demo Output
 
-SIP Call Visualizer is a simple tool that parses SIP traces and converts them into readable call flow sequences.
-
-It is useful for VoIP engineers, telecom developers, and support teams who need to understand SIP signaling faster.
-
-The tool can help visualize common SIP call flows such as:
-
-- INVITE
-- 100 Trying
-- 180 Ringing
-- 200 OK
-- ACK
-- BYE
-
-It can also generate Mermaid sequence diagrams for documentation and debugging.
-
----
-
-# Features
-
-- parse simple SIP traces
-- extract sender and receiver flow
-- generate readable call sequence
-- generate Mermaid sequence diagram
-- useful for SIP troubleshooting and documentation
-
----
-
-# Example Input
+### Input (SIP Messages)
 
 ```text
-Alice -> Proxy: INVITE
-Proxy -> Bob: INVITE
-Bob -> Proxy: 100 Trying
-Proxy -> Alice: 100 Trying
-Bob -> Proxy: 180 Ringing
-Proxy -> Alice: 180 Ringing
-Bob -> Proxy: 200 OK
-Proxy -> Alice: 200 OK
-Alice -> Proxy: ACK
-Proxy -> Bob: ACK
-Bob -> Proxy: BYE
-Proxy -> Alice: BYE
-Alice -> Proxy: 200 OK
-Proxy -> Bob: 200 OK
+INVITE sip:user@domain.com SIP/2.0
+100 Trying
+180 Ringing
+200 OK
+ACK
+BYE
 ```
 
----
-
-# Example Output
-
-Parsed Call Flow
+### Output (Call Flow)
 
 ```text
-Alice -> Proxy : INVITE.
-Proxy -> Bob : INVITE.
-Bob -> Proxy : 100 Trying.
-Proxy -> Alice : 100 Trying
-Bob -> Proxy : 180 Ringing
-Proxy -> Alice : 180 Ringing
-Bob -> Proxy : 200 OK
-Proxy -> Alice : 200 OK
-Alice -> Proxy : ACK
-Proxy -> Bob : ACK
-Bob -> Proxy : BYE
-Proxy -> Alice : BYE
-Alice -> Proxy : 200 OK
-Proxy -> Bob : 200 OK
+Caller → Server: INVITE
+Server → Caller: 100 Trying
+Server → Caller: 180 Ringing
+Server → Caller: 200 OK
+Caller → Server: ACK
+Caller → Server: BYE
 ```
 
----
+### 📊 Mermaid Diagram
 
-# Mermaid Diagram
-
-```text
+```mermaid
 sequenceDiagram
-    participant Alice
-    participant Proxy
-    participant Bob
+    participant Caller
+    participant Server
 
-    Alice->>Proxy: INVITE
-    Proxy->>Bob: INVITE
-    Bob->>Proxy: 100 Trying
-    Proxy->>Alice: 100 Trying
-    Bob->>Proxy: 180 Ringing
-    Proxy->>Alice: 180 Ringing
-    Bob->>Proxy: 200 OK
-    Proxy->>Alice: 200 OK
-    Alice->>Proxy: ACK
-    Proxy->>Bob: ACK
-    Bob->>Proxy: BYE
-    Proxy->>Alice: BYE
-    Alice->>Proxy: 200 OK
-    Proxy->>Bob: 200 OK
-```
----
-
-# Project Structure
-
-```text
-visualizer/
-main parser and sample data
-
-docs/
-architecture notes
-
-scripts/
-helper script to run parser
+    Caller->>Server: INVITE
+    Server-->>Caller: 100 Trying
+    Server-->>Caller: 180 Ringing
+    Server-->>Caller: 200 OK
+    Caller->>Server: ACK
+    Caller->>Server: BYE
 ```
 
 ---
 
-# Run
+## ⚡ Features
+
+* 🔍 Parse SIP messages into structured call flow
+* 📊 Generate Mermaid sequence diagrams
+* 📞 Supports common SIP flows:
+
+  * Basic call
+  * Call establishment & teardown
+* 🧩 Easy to extend for custom SIP scenarios
+
+---
+
+## 🛠️ Installation
 
 ```bash
-python visualizer/sip_visualizer.py
+git clone https://github.com/vox-zen/sip-call-visualizer.git
+cd sip-call-visualizer
+pip install -r requirements.txt
 ```
 
 ---
 
-# Use Cases
+## ▶️ Usage
 
-- SIP troubleshooting
-- VoIP support analysis
-- call flow documentation
-- debugging SIP interactions
-- telecom training
+```bash
+python visualizer/sip_visualizer.py input.txt
+```
+
+Or use sample:
+
+```bash
+python visualizer/sip_visualizer.py samples/basic_call.txt
+```
 
 ---
 
-# Roadmap
+## 📁 Project Structure
 
-- support raw SIP log parsing
-- export PNG or SVG diagrams
-- web UI
-- ladder diagram output
-- Wireshark text export support
+```bash
+visualizer/        # Core parsing & visualization logic
+scripts/           # Utility scripts
+docs/              # Documentation & examples
+samples/           # Example SIP traces
+```
 
-# License
+---
 
-MIT
+## 🎯 Use Cases
+
+* Debug SIP call flows
+* Analyze VoIP signaling issues
+* Learn how SIP communication works
+* Visualize logs from:
+
+  * Asterisk
+  * FreeSWITCH
+  * SIP Trunks
+
+---
+
+## 🔮 Roadmap
+
+* [ ] Parse raw SIP logs (Wireshark export)
+* [ ] Export diagrams as PNG/SVG
+* [ ] Web UI (upload SIP logs → visualize)
+* [ ] Real-time call tracing
+
+---
+
+## 💡 Example Workflow
+
+1. Capture SIP logs (Asterisk / tcpdump / Wireshark)
+2. Feed into this tool
+3. Get readable flow + diagram
+4. Debug faster 🚀
+
+---
+
+## 👤 Author
+
+**Vizi**
+Full-Stack Developer (Communication Tools Focus)
+
+---
+
+## ⭐ Support
+
+If this project helps you, consider giving it a ⭐ on GitHub!
