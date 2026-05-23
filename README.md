@@ -126,9 +126,8 @@ samples/           # Example SIP traces
 ---
 
 ## 👤 Author
-
-**Vizi**
-Full-Stack Developer (Communication Tools Focus)
+**Zain**
+Voice Systems Builder (Communication Systems Focus)
 
 ---
 
